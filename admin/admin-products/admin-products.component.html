@@ -1,0 +1,47 @@
+
+<p>
+    <button 
+    routerLink= "/admin/products/new" 
+    class= "btn btn-primary">New Product
+    </button>
+</p>
+<p>
+    <input #query (keyup)= "filter(query.value)" class= "form-control" placeholder="Search...">
+</p>
+
+<!-- <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element">  </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let element">  <mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table> -->
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of filteredProducts">
+        <td>{{ p.title }}</td>
+        <td>{{ p.price }}</td>
+        <td>
+            <a [routerLink]="['/admin/products/', p.key]"> Edit </a>
+        </td>
+        </tr>
+        
+    </tbody>
+</table>
