@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './shopping-cart.service';
 import { ProductService } from './product.service';
 import { CategoryService } from './category.service';
 import { UserService } from './user.service';
@@ -15,7 +16,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ngx-custom-validators';
- import { MatTableModule } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,7 +33,8 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { AdminAuthGuardService as AdminAuthGuard } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,23 +48,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
-  ],
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
+    ],
   imports: [
     BrowserModule,
     FormsModule,
     CustomFormsModule,
     MatTableModule,
+    MatSortModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
     RouterModule.forRoot([
-      {path:'', component: HomeComponent},
+      {path:'', component: ProductsComponent},
       {path:'products', component: ProductsComponent},
-      {path:'shopping-cart', component: ShoppingCartComponent},
-      {path:'login', component: LoginComponent},
+      {path:'contact', component: ShoppingCartComponent},
+      {path:'award', component: LoginComponent},
 
       {path:'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path:'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
@@ -83,7 +89,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminAuthGuard,
     UserService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })

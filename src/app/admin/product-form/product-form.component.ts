@@ -22,20 +22,18 @@ export class ProductFormComponent  {
     private router: Router,
     private categoryService: CategoryService,
      private productService: ProductService) { 
-    this.categories$ = categoryService.getCategories();
+    this.categories$ = categoryService.getAll();
 
     this.id = this.route.snapshot.paramMap.get('id');
     
     if(this.id) this.productService.get(this.id).pipe(take(1)).subscribe(p => {
       this.product = p;
-      // console.log("title11: ", this.product.title);
     });
-   // console.log("title22: ", this.product.title);
   }
 
-  ngOnInit() {
-    setTimeout(() => this.show=true, 500);
-  }
+  // ngOnInit() {
+  //   setTimeout(() => this.show=true, 500);
+  // }
 
   save(product) {
 

@@ -1,0 +1,15 @@
+.jp {
+    margin-top: -11%;
+    margin-left: 70%;
+    margin-bottom: 0px;
+    float:top;
+}
+
+/* 
+.jp-text {
+   color: blue; 
+} */
+
+@media only screen and (max-width: 768px) { 
+    /* Here are some changes*/
+}
